@@ -105,6 +105,11 @@ limit 1
 
 ```sql
 <!--Copy solution here-->
+select
+start_date,
+salary,
+sum(salary) over (order by start_date) as total_salary
+from employees
 ```
 
 2) Determine if any employees started on the same day (hint: some sort of ranking may be useful here)
