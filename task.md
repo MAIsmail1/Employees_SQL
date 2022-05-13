@@ -138,6 +138,16 @@ from employees
 
 ```sql
 <!--Copy solution here-->
+select
+employees.first_name,
+employees.last_name,
+departments.name,
+employees.start_date,
+employees.salary,
+avg(employees.salary) over(order by employees.start_date) as average_salary
+from employees 
+inner join departments
+on employees.department_id = departments.id
 ```
 
 5) **Extension:** Research the `EXTRACT` function and use it in conjunction with `PARTITION` and `COUNT` to show how many employees started working for BusinessCorp&#8482; each year. If you're feeling adventurous you could further partition by month...
