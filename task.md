@@ -25,6 +25,15 @@ from employees
 
 ```sql
 <!--Copy solution here-->
+select
+departments.id,
+departments.name,
+avg(salary) as department_avg_salary
+from employees
+inner join departments
+on employees.department_id = departments.id
+group by departments.id
+
 ```
 
 3) Using a CTE find the ratio of each employees salary to their team average, eg. an employee earning £55000 in a team where the average is £50000 has a ratio of 1.1
