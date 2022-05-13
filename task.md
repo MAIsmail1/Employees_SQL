@@ -40,6 +40,26 @@ group by departments.id
 
 ```sql
 <!--Copy solution here-->
+with department_averages(id, name, department_avg_salary) as (
+select
+departments.id,
+departments.name,
+avg(salary) as department_avg_salary
+from employees
+inner join departments
+on employees.department_id = departments.id
+group by departments.id
+)
+select
+employees.first_name,
+employees.last_name,
+employees.salary,
+department_averages.name,
+department_averages.department_avg_salary,
+employees.salary / department_averages.department_avg_salary as ratio
+from employees
+inner join department_averages
+on employees.department_id = department_averages.id
 ```
 
 4) Find the employee with the highest ratio in Argentina
