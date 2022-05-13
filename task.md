@@ -128,6 +128,10 @@ order by ranking desc
 
 ```sql
 <!--Copy solution here-->
+select
+distinct(country),
+count(*) over (partition by country)
+from employees
 ```
 
 4) Show how the average salary cost for each department has changed as the number of employees has increased
