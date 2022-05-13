@@ -66,6 +66,29 @@ on employees.department_id = department_averages.id
 
 ```sql
 <!--Copy solution here-->
+with department_averages(id, name, department_avg_salary) as (
+select
+departments.id,
+departments.name,
+avg(salary) as department_avg_salary
+from employees
+inner join departments
+on employees.department_id = departments.id
+group by departments.id
+)
+select
+employees.first_name,
+employees.last_name,
+employees.salary,
+department_averages.name,
+department_averages.department_avg_salary,
+employees.salary / department_averages.department_avg_salary as ratio
+from employees
+inner join department_averages
+on employees.department_id = department_averages.id
+where employees.country = 'Argentina'
+order by ratio desc
+limit 1
 ```
 
 5) **Extension:** Add a second CTE calculating the average salary for each country and add a column showing the difference between each employee's salary and their country average
