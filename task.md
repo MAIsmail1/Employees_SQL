@@ -116,6 +116,12 @@ from employees
 
 ```sql
 <!--Copy solution here-->
+select
+start_date,
+dense_rank() over (order by start_date) as ranking
+from employees
+order by ranking desc
+
 ```
 
 3) Find how many employees there are from each country
