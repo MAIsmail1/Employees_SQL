@@ -16,6 +16,9 @@ The major corporation BusinessCorp&#8482; wants to do some analysis of varioius 
 
 ```sql
 <!--Copy solution here-->
+select
+avg(salary) as company_average
+from employees
 ```
 
 2) Calculate the average salary of the employees in each team (hint: you'll need to `JOIN` and `GROUP BY` here)
